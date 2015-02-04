@@ -1,13 +1,9 @@
 require 'eb_ruby_client/resource/attributes'
-require 'eb_ruby_client/resource/email'
 
 module EbRubyClient
   module Resource
-    class User
+    class Email
       include Attributes
-
-      attribute :id, :name, :first_name, :last_name
-      contains emails: EbRubyClient::Resource::Email
 
       def initialize(data)
         set_attributes(data)
