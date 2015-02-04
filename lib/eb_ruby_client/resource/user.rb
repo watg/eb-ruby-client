@@ -7,7 +7,7 @@ module EbRubyClient
       include Attributes
 
       attribute :id, :name, :first_name, :last_name
-      contains emails: EbRubyClient::Resource::Email
+      contains :emails
 
       def initialize(data)
         set_attributes(data)

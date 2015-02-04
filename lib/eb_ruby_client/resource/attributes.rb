@@ -48,12 +48,12 @@ module EbRubyClient
         end
       end
 
-      def contains(mappings)
-        mappings.keys.each do |member|
+      def contains(*members)
+        members.each do |member|
           attr_accessor member
         end
-        class_variable_set(:@@_member_names, mappings.keys.map(&:to_s))
-        class_variable_set(:@@_members, mappings)
+        class_variable_set(:@@_member_names, members.map(&:to_s))
+        class_variable_set(:@@_members, mappings_for(members))
       end
 
       def member_names
@@ -66,6 +66,17 @@ module EbRubyClient
 
       def member_class(type)
         class_variable_get(:@@_members)[type.to_sym]
+      end
+
+      def mappings_for(members)
+        Hash[
+          *members.inject([]) do |arr, m|
+            singular = m.to_s.sub(/(s)\Z/, '')
+            class_name = singular.gsub(/(\A|_)[a-z]/) { |l| l[-1].upcase }
+            klass = EbRubyClient::Resource.const_get(class_name)
+            arr << m << klass
+          end
+        ]
       end
     end
   end
