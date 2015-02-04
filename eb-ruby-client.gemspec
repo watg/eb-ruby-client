@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'eb/ruby/client/version'
+require 'eb_ruby_client/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "eb-ruby-client"
-  spec.version       = Eb::Ruby::Client::VERSION
+  spec.version       = EbRubyClient::VERSION
   spec.authors       = ["Wool and the Gang", "John Cinnamond"]
   spec.email         = ["tech@woolandthegang.com"]
   spec.summary       = %q{An Eventbrite API client.}
@@ -19,4 +19,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "rspec", "~> 3.2.0"
+  spec.add_development_dependency "webmock", "~> 1.20.4"
 end
