@@ -12,39 +12,42 @@ module EbRubyClient
     end
 
     def get(path)
-      do_request(full_path_for(path)) do |uri|
+      send_request(full_path_for(path)) do |uri|
         Net::HTTP::Get.new(uri)
       end
     end
 
     private
 
-    def do_request(path, history = [], &block)
+    def send_request(path, history = [], &block)
       uri = URI(path)
       Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https') do |http|
         request = yield(uri)
         request["Authorization"] = "Bearer #{auth_token}"
 
         response = http.request(request)
+        check_response(response, path, history, &block)
+      end
+    end
 
-        case response
-        when Net::HTTPSuccess
-          JSON.parse(response.body)
-        when Net::HTTPRedirection
-          location = response["Location"]
-          if history.include?(location)
-            raise RedirectionLoop.new(path)
-          end
-          do_request(location, history + [path], &block)
-        else
-          body = response.body
-          description = if body.nil? || body.empty?
-                          ""
-                        else
-                          JSON.parse(response.body)["error_description"]
-                        end
-          raise RequestFailure.new(description)
+    def check_response(response, path, history = [], &block)
+      case response
+      when Net::HTTPSuccess
+        JSON.parse(response.body)
+      when Net::HTTPRedirection
+        location = response["Location"]
+        if history.include?(location)
+          raise RedirectionLoop.new(path)
         end
+        send_request(location, history + [path], &block)
+      else
+        body = response.body
+        description = if body.nil? || body.empty?
+                        ""
+                      else
+                        JSON.parse(response.body)["error_description"]
+                      end
+        raise RequestFailure.new(description)
       end
     end
 
