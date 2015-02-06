@@ -1,0 +1,1 @@
+{"organizers": [{"description": null, "logo": null, "resource_uri": "https://www.eventbriteapi.com/v3/organizers/123/", "id": "123", "name": "Betty Person", "url": "http://www.eventbrite.com/o/betty-person-456", "num_past_events": 0, "num_future_events": 0}], "pagination": {"object_count": 1, "page_number": 1, "page_size": 50, "page_count": 1}}
