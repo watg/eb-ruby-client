@@ -32,4 +32,13 @@ RSpec.describe EbRubyClient::Client do
       expect(client.users).to be(users)
     end
   end
+
+  describe "venues" do
+    it "creates a Venues endpoint" do
+      venues = instance_double(EbRubyClient::Endpoints::Venues)
+      expect(EbRubyClient::Endpoints::Venues).to receive(:new).
+        with(connection: connection).and_return(venues)
+      expect(client.venues).to be(venues)
+    end
+  end
 end

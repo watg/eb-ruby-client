@@ -1,0 +1,1 @@
+{"address": {"address_1": "Apartment 106", "address_2": "45 Royal Street", "city": "London", "region": "London", "postal_code": "SW1A 1AA", "country": "GB", "latitude": null, "longitude": null}, "resource_uri": "https://www.eventbriteapi.com/v3/venues/1234/", "id": "1234", "name": "venue1", "latitude": "37.782222", "longitude": "-122.40551499999998"}

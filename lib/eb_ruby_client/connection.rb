@@ -17,6 +17,14 @@ module EbRubyClient
       end
     end
 
+    def post(path, data)
+      send_request(full_path_for(path)) do |uri|
+        post = Net::HTTP::Post.new(uri)
+        post.set_form_data(data)
+        post
+      end
+    end
+
     private
 
     def send_request(path, history = [], &block)
