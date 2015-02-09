@@ -30,12 +30,8 @@ RSpec.describe EbRubyClient::Support::Inflections do
       expect(inflections.classify("user")).to eq("User")
     end
 
-    it "singularizes words" do
-      expect(inflections.classify("users")).to eq("User")
-    end
-
     it "handles underscores" do
-      expect(inflections.classify("ticket_classes")).to eq("TicketClass")
+      expect(inflections.classify("ticket_class")).to eq("TicketClass")
     end
 
     it "handles words that are already valid class names" do

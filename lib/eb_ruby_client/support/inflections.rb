@@ -14,7 +14,7 @@ module EbRubyClient
       end
 
       def classify(word)
-        singularize(word).gsub(/(\A|_)[a-z]/) do |word_start|
+        word.gsub(/(\A|_)[a-z]/) do |word_start|
           word_start[-1].upcase
         end
       end
