@@ -1,5 +1,4 @@
-require 'eb_ruby_client/connection'
-require 'eb_ruby_client/endpoints/users'
+require 'eb_ruby_client'
 
 RSpec.describe EbRubyClient::Endpoints::Users do
   let(:connection) { instance_double(EbRubyClient::Connection) }

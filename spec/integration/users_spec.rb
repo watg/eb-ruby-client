@@ -1,4 +1,4 @@
-require 'eb_ruby_client/client.rb'
+require 'eb_ruby_client'
 
 RSpec.describe "users" do
   include RSpec::Fixtures

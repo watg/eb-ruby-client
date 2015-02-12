@@ -1,5 +1,4 @@
-require 'eb_ruby_client/resource/user'
-require 'eb_ruby_client/resource/organizer'
+require 'eb_ruby_client'
 
 module EbRubyClient
   module Endpoints

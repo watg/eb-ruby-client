@@ -1,4 +1,4 @@
-require 'eb_ruby_client/resource/venue'
+require 'eb_ruby_client'
 
 module EbRubyClient
   module Endpoints

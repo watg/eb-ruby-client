@@ -1,5 +1,4 @@
-require 'eb_ruby_client/client.rb'
-require 'eb_ruby_client/resource/venue'
+require 'eb_ruby_client'
 
 RSpec.describe "venues" do
   include RSpec::Fixtures

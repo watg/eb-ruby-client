@@ -51,7 +51,7 @@ RSpec.describe EbRubyClient::Resource::Address do
 
   describe "#to_data" do
     subject(:address_data) { address.to_data }
-    
+
     it "includes the address details" do
       expect(address_data["address_1"]).to eq("Apartment 106")
       expect(address_data["address_2"]).to eq("45 Royal Street")
@@ -63,7 +63,7 @@ RSpec.describe EbRubyClient::Resource::Address do
 
     it "treats address_2 as optional" do
       address.address_2 = nil
-      expect(address_data).not_to have_key("address_2") 
+      expect(address_data).not_to have_key("address_2")
     end
 
     it "treats city as optional" do
@@ -80,6 +80,6 @@ RSpec.describe EbRubyClient::Resource::Address do
       address.postal_code = nil
       expect(address_data).not_to have_key("postal_code")
     end
-    
+
   end
 end

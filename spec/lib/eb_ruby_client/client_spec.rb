@@ -1,4 +1,4 @@
-require 'eb_ruby_client/client'
+require 'eb_ruby_client'
 
 RSpec.describe EbRubyClient::Client do
   let(:configuration) { instance_double(EbRubyClient::Configuration) }
