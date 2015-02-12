@@ -15,7 +15,7 @@ RSpec.describe "venues" do
 
   describe "create" do
     it "returns the created venue" do
-      venue = EbRubyClient::Resource::Venue.new(
+      venue_data = {
         "name"    => "Betty's House",
         "address" => {
           "address_1"   => "123 Some Street",
@@ -23,9 +23,9 @@ RSpec.describe "venues" do
           "postal_code" => "POST CODE",
           "country"     => "GB",
         }
-      )
+      }
 
-      returned_venue = client.venues.create(venue)
+      returned_venue = client.venues.create(venue_data)
       expect(returned_venue.name).to eq("venue1")
       expect(returned_venue.id).to eq("1234")
       expect(returned_venue.address.address_1).to eq("Apartment 106")
