@@ -57,7 +57,8 @@ RSpec.describe EbRubyClient::Resource::Venue do
     end
 
     it "includes the address" do
-      expect(venue_data["venue.address"]).to eq(venue.address.to_data)
+      expect(venue_data["venue.address.address_1"]).to eq(venue.address.address_1)
+      expect(venue_data["venue.address.city"]).to eq(venue.address.city)
     end
 
   end

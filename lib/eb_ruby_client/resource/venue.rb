@@ -15,7 +15,12 @@ module EbRubyClient
       end
 
       def to_data
-        {"venue.name" => name, "venue.address" => address.to_data }
+        data = {"venue.name" => name}
+        address.to_data.inject(data) do |acc, next_pair|
+          k, v = next_pair
+          acc["venue.address.#{k}"] = v
+          acc
+        end
       end
     end
   end
