@@ -9,9 +9,9 @@ module EbRubyClient
         @connection = connection
       end
 
-      def create(venue_data)
-        response = connection.post('venues/', venue_data)
-
+      def create(venue)
+        response = connection.post('venues/', venue.to_data)
+        
         EbRubyClient::Resource::Venue.new(response)
       end
     end
